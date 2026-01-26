@@ -161,7 +161,7 @@ async function createTextureJsonFiles (fromModelPath, toModelPath) {
       return `${modelTexturesFolderPath}/${partName}/${texture}`
     }))
 
-    await fs.writeFile(`${toModelPath}/${textures.map(texture => path.parse(texture).name).join('&')}.json`, Helper.stringify(textureJson))
+    await fs.writeFile(`${toModelPath}/${textures.map(texture => path.parse(texture).name).join('-')}.json`, Helper.stringify(textureJson))
   }))
 }
 

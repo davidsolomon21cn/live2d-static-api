@@ -116,7 +116,7 @@ apiPath="https://raw.githubusercontent.com/evgo2017/live2d-static-api/main/index
 │  │
 │  └─bilibili-live
 │      ├─22
-│      │      closet-default-v2&cba-normal-upper&cba-normal-lower&cba-hat.json // 特定服装配置，服装各部分使用 & 连接
+│      │      closet-default-v2-cba-normal-upper-cba-normal-lower-cba-hat.json // 特定服装配置，服装各部分使用 - 连接
 │      │      ...
 │
 └─models // 模型文件夹，只读不写
