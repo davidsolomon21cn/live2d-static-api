@@ -32,7 +32,7 @@
 - **路径示例**：
   ```js
   // 国内推荐：unpkg
-  apiPath="https://unpkg.com/live2d-static-api@1.0.1/indexes"
+  apiPath="https://unpkg.com/live2d-static-api@1.0.3/indexes"
   
   // 全球推荐：jsDelivr
   apiPath="https://cdn.jsdelivr.net/npm/live2d-static-api/indexes"
