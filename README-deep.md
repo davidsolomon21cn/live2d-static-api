@@ -23,7 +23,7 @@
   apiPath="./live2d-static-api/indexes"
   ```
 
-![apiPath](https://github.com/evgo2017/live2d-static-api/raw/master/public/apiPath.png)
+![apiPath](https://raw.githubusercontent.com/evgo2017/live2d-static-api/main/assets/apiPath.png)
 
 ### 2. NPM / 公用 CDN 模式（推荐：博客或跨站点引用）
 
