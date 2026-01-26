@@ -1,130 +1,90 @@
-# live2d-static-api
+![live2d-static-api](https://socialify.git.ci/evgo2017/live2d-static-api/image?custom_description=live2d.min.js+api+%E9%9D%99%E6%80%81%E5%8C%96%E7%9A%84%E9%9B%B6%E7%BB%B4%E6%8A%A4%E6%96%B9%E6%A1%88&custom_language=Node.js&description=1&forks=1&language=1&name=1&owner=1&stargazers=1&theme=Light)
 
-## 零、背景
+## 🚀 快速预览
 
-[vue-live2d](https://github.com/evgo2017/vue-live2d) 之前通过调用 [live2d_api](https://github.com/fghrsh/live2d_api) 提供的 api 来加载模型，但该 api 出现了问题，导致长时间加载不到数据。
+*   **在线 DEMO**：[https://vue-live2d.demo.evgo2017.com](https://vue-live2d.demo.evgo2017.com)
+*   **配套应用示例：** [vue-live2d](https://github.com/evgo2017/vue-live2d)
 
-所以我写了这个项目来代替  [live2d_api](https://github.com/fghrsh/live2d_api)  ，同时提高 [vue-live2d](https://github.com/evgo2017/vue-live2d) 的易用。
+## 💡 如何使用？
 
-## 一、效果预览
+本项目的核心产出是 `indexes` 文件夹。你只需要将该文件夹部署，并获取其 URL 作为 apiPath 即可。更多信息参阅 [深度指南](./README-deep.md)。
 
-在线 DEMO：https://vue-live2d.demo.evgo2017.com
+---
 
-## 二、介绍
+## 🌟 核心理念：API 静态化
 
-live2d-static-api 是一款静态 api，不需要部署复杂环境，只需要 web 服务（如 Nginx 等）即可。
+**live2d-static-api** 是经典 `live2d.min.js` api、[fghrsh/live2d_api](https://github.com/fghrsh/live2d_api) (PHP 版) 等项目的**优化解决方案**。
 
-原理和部署 Vue 项目相同，网站怎么部署，这个项目怎么部署。当前项目的 url 就已是一个 api 服务了。
+### 🔄 为什么要替代？
 
-## 三、几种部署方案
+如果你正在使用以下项目，本项目可以为你提供更稳定、更省心的体验：
+- **正在使用 `live2d.min.js` 及其衍生库**：只需更改 `apiPath`，即可无缝切换到静态资源。
+- **正在使用 `fghrsh/live2d_api`**：无需再折腾 PHP 环境、Docker 或负载均衡。
+- **各种看板娘组件 (`live2d-widget`, `live2d_demo` 等)**：受够了第三方接口的 404 和不稳定，本项目是你自行托管的最佳选择。
 
-#### 第一种 放在项目的静态文件夹内
+### ⚡ 静态 API 的降维打击
 
-如 Vue 项目的 public 文件夹内，这样就同网站一起部署了，[在线 DEMO](https://vue-live2d.demo.evgo2017.com) 就采用的这种方式
+它的逻辑非常简单：**将原本需要后端处理的逻辑（PHP/Node.js）提前在编译阶段完成，生成纯 JSON 索引文件。**
 
-``` js
-apiPath="./live2d-static-api/indexes"
+这样，你只需要把生成的文件夹扔进任何静态 Web 服务器（甚至 CDN），API 就能跑起来。
+
+### ⚡ 为什么选择静态 API？
+
+| 特性 | 传统动态 API (PHP/Node.js) | 本项目 (静态 API) |
+| :--- | :--- | :--- |
+| **服务器要求** | 必须安装 PHP/Node.js 环境 | 任意 Web 服务器 (Nginx, GitHub Pages, CDN) |
+| **维护成本** | 需维护服务进程、担心宕机 | **零维护**，部署即永久在线 |
+| **加载性能** | 受到后端处理速度限制 | **极致速度**，直接读取静态文件 |
+| **跨域处理** | 需要后端配置 CORS | 托管商(如 CDN)配置或天然支持 |
+| **安全性** | 存在脚本注入等风险 | **绝对安全**，仅分发静态资源 |
+
+## ✨ 特性
+
+-   **零门槛部署**：像发布网页一样发布 API。
+-   **全平台兼容**：适配所有前端构建工具及静态平台。
+-   **CDN 友好**：支持一键发布到 NPM 并通过 `unpkg` / `jsdelivr` 加速，国内访问极速稳定。
+-   **灵活可定制**：一键脚本，轻松生成属于你自己的模型索引。
+
+---
+
+## 🛠 进阶：修改与生成模型
+
+如果你想新增模型、修改服装或调整配置，只需在 `models` 文件夹中操作，然后运行编译脚本：
+
+### 编译指令
+```bash
+# 1. 默认编译（推荐）
+npm run build
+
+# 2. 自定义参数编译
+node build.js fromBasePath=models toBasePath=indexes isCompress=true
 ```
 
-![apiPath](https://github.com/evgo2017/live2d-static-api/raw/master/public/apiPath.png)
+### 编译参数
+| 参数 | 含义 | 默认值 |
+| :--- | :--- | :--- |
+| `fromBasePath` | 模型原始资源路径 | `models` |
+| `toBasePath` | 生成的索引输出路径 | `indexes` |
+| `isCompress` | 生成的 JSON 索引是否压缩 | `true` |
 
-#### 第二种 基于 Github 提供的 api 地址
+---
 
-``` js
-apiPath="https://raw.githubusercontent.com/evgo2017/live2d-static-api/refs/heads/main/indexes"
-```
+## 📋 参考资料
 
-#### 第三种 在服务器自行部署 api
+本项目逻辑灵感源自 [fghrsh/live2d_api](https://github.com/fghrsh/live2d_api)。
+在原项目的基础上，我们去除了对 PHP 环境的依赖，转而使用 Node.js 预编译 + 静态分发的模式。
 
-如 Nginx 的 `conf` 文件，再 `apiPath` 填写对应的地址：
+> **作者自述**：
+> “原版的 PHP 实现很棒，但我不想为了一个看板娘去折腾容器或后端环境。通过静态化处理，我发现不仅复杂度降低了，加载速度也更快了。这就是完美的解决方案。”
 
-```
-server {
-    location /api/live2d-static-api {
-        add_header 'Access-Control-Allow-Origin' '*';
-        add_header 'Access-Control-Allow-Methods' 'GET, OPTIONS';
-        add_header 'Access-Control-Allow-Headers' 'Content-Type';
-        alias /var/www/live2d-static-api;
-    }
-}
-```
+## ⚖️ 版权说明
 
-## 四、接口
+*   **模型资源**：`models` 文件夹内的 Live2D 模型版权均属于原作者，**仅供研究学习，严禁用于商业用途**。
+*   **其他内容**：代码部分遵循 MIT 协议，版权属于 [evgo2017](https://github.com/evgo2017)。
 
-接口使用请参考 [vue-live2d](https://github.com/evgo2017/vue-live2d)。
+## 🤝 参与开发
 
-| 请求数据的接口 url                              | 含义               | 备注                                                         |
-| ----------------------------------------------- | ------------------ | ------------------------------------------------------------ |
-| /indexes/models.json                            | 获得模型索引       |                                                              |
-| /indexes/\<modelPath\>/textures.json            | 获得模型的服装索引 | modelPath 值从模型索引文件取得                               |
-| /indexes/\<modelPath\>/\<modelTexturesId\>.json | 获得模型的特定配置 | modelTexturesId 值从服装索引文件取得，默认为 default；这也是模型最终要加载的文件 |
+如果您发现问题，或希望贡献，欢迎提交 Pull Request。
 
-## 五、文件夹结构
 
-```
-├─indexes // 索引文件夹，每次 build 完全重建
-│  │  models.json // 模型索引文件
-│  │
-│  └─Potion-Maker
-│  │   ├─Pio
-│  │   │      animal-costume-racoon.json // 特定服装配置
-│  │   │      animal-costume.json // 特定服装配置
-│  │   │      ... // 特定服装配置，从<默认服装配置>进一步转义而来
-│  │   │      default.json // 默认服装配置，从<模板文件>转义而来
-│  │   │      textures.json // 服装索引文件
-│  │   │
-│  │   └─Tia ...
-│  │
-│  └─bilibili-live
-│      ├─22
-│      │      closet-default-v2&cba-normal-upper&cba-normal-lower&cba-hat.json // 特定服装配置，服装各部分使用 & 连接
-│      │      ...
-│
-└─models // 模型文件夹，只读不写
-    └─Potion-Maker
-        ├─Pio
-        │  │  model.json // 模型配置（模板文件）
-        │  │  model.moc
-        │  │
-        │  ├─motions
-        │  │      Breath Dere1.mtn
-        │  │      Breath Dere2.mtn
-        │  │      Breath ...
-        │  │
-        │  └─textures // 服装文件夹
-        │      └─textures_00 // 服装是分部分且有顺序的，几个文件夹就几部分，顺序从<模板文件>获取
-        │              animal-costume-racoon.png
-        │              animal-costume.png
-        │              ...
-        │
-        └─Tia ...
-```
 
-### 5. 编译
-
-如果服务提供的模型和服装有修改，需要重新生成索引文件。每次 build 会完全重建索引文件夹。
-
-| 可配置参数   | 含义                   | 默认值  |
-| ------------ | ---------------------- | ------- |
-| fromBasePath | 模型文件夹地址         | models  |
-| toBasePath   | 索引文件夹地址         | indexes |
-| isCompress   | 是否压缩生成索引的文件 | true    |
-
-支持命令行参数：
-
-```shell
-$ node build.js // 使用默认值
-$ node build.js fromBasePath=models toBasePath=indexes isCompress=false
-```
-
-## 参考资料
-
-[1] https://github.com/fghrsh/live2d_api
-
-> [live2d_api](https://github.com/fghrsh/live2d_api) 使用的是 php，而我对 php 没什么经验（还得 docker 打个包），考虑过用 node 重写（还得部署服务），最后通过静态文件就解决问题了，完美。
-
-## 版权
-
-**API 内所有模型（models 文件夹内）版权均属于原作者，仅供研究学习，不得用于商业用途**
-
-其他内容版权均属于 evgo2017，MIT。
