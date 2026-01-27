@@ -31,11 +31,8 @@
 - **优点**：极速、支持全局跨域、无需维护服务器空间。
 - **路径示例**：
   ```js
-  // 国内推荐：unpkg
+  apiPath="https://cdn.jsdelivr.net/npm/live2d-static-api@1.0.5/indexes"
   apiPath="https://unpkg.com/live2d-static-api@1.0.4/indexes"
-  
-  // 全球推荐：jsDelivr
-  apiPath="https://cdn.jsdelivr.net/npm/live2d-static-api/indexes"
   ```
 
 ### 3. 自建静态服务器（推荐：自有私有模型）

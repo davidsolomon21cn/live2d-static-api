@@ -2,7 +2,7 @@
 
 ## 🚀 快速预览
 
-*   **在线 DEMO**：[https://vue-live2d.demo.evgo2017.com](https://vue-live2d.demo.evgo2017.com)
+*   **在线 DEMO**：[https://live2d.evgo2017.com](https://live2d.evgo2017.com)
 *   **配套应用示例：** [vue-live2d](https://github.com/evgo2017/vue-live2d)
 
 ## 💡 如何使用？
