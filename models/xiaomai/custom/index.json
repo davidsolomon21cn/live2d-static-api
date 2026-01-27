@@ -1,8 +1,12 @@
 {
+	"modelIntroduce": "XiaoMai ！这里是 XiaoMai ~ ~",
 	"version":"Sample 1.0.0",
 	"model":"umaru.moc",
+	"expressions": [
+		{ "name": "f00", "file": "expressions/f00.exp.json" }
+	],
 	"textures":[
-		"umaru2048/texture_00.png"
+		"textures/umaru2048/texture_00.png"
 	],
 	"physics":"physics.json",
 	"layout":
@@ -69,7 +73,7 @@
 			{ "file":"mtn/rita_Live2D_018.mtn", "sound": "voice/18.wav", "msg_id":"18", "expressions":"F00" },
 			{ "file":"mtn/rita_Live2D_019.mtn", "sound": "voice/19.wav", "msg_id":"19", "expressions":"F00" },
 			{ "file":"mtn/rita_Live2D_020.mtn", "sound": "voice/20.wav", "msg_id":"20", "fade_in":500, "fade_out":1000}
-		],		
+		],
 		"shake":
 		[
 			{ "file":"mtn/rita_Live2D_021.mtn", "sound": "voice/21.wav", "msg_id":"21" },
