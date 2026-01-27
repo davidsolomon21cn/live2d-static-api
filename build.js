@@ -94,8 +94,13 @@ class Setting {
   static updateMotions (fromModelPath, toModelPath, json) {
     if (json.motions) {
       Object.values(json.motions).forEach(groups => {
-        groups.forEach(({ file }, index, array) => {
-          array[index].file = path.relative(toModelPath, path.normalize(`${fromModelPath}/${file}`))
+        groups.forEach((motion, index, array) => {
+          if (motion.file) {
+            array[index].file = path.relative(toModelPath, path.normalize(`${fromModelPath}/${motion.file}`))
+          }
+          if (motion.sound) {
+            array[index].sound = path.relative(toModelPath, path.normalize(`${fromModelPath}/${motion.sound}`))
+          }
         })
       })
     }

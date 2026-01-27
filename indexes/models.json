@@ -1,11 +1,11 @@
 [
 	{
 		"modelIntroduce": "来自 Bilibili Live 的 22 ~",
-		"modelPath": "bilibili-live/22"
+		"modelPath": "bilibili-live/33"
 	},
 	{
 		"modelIntroduce": "来自 Bilibili Live 的 22 ~",
-		"modelPath": "bilibili-live/33"
+		"modelPath": "bilibili-live/22"
 	},
 	{
 		"modelIntroduce": "Nep! Nep! 超次元游戏：海王星 系列",
@@ -13,18 +13,22 @@
 	},
 	{
 		"modelIntroduce": "Nep! Nep! 超次元游戏：海王星 系列",
-		"modelPath": "HyperdimensionNeptunia/nepnep"
-	},
-	{
-		"modelIntroduce": "Nep! Nep! 超次元游戏：海王星 系列",
 		"modelPath": "HyperdimensionNeptunia/noir"
 	},
 	{
-		"modelIntroduce": "Shizuku Talk ！这里是 Shizuku ~",
-		"modelPath": "ShizukuTalk/shizuku-48"
+		"modelIntroduce": "Nep! Nep! 超次元游戏：海王星 系列",
+		"modelPath": "HyperdimensionNeptunia/nepnep"
 	},
 	{
 		"modelIntroduce": "来自 Potion Maker 的 Pio ~",
 		"modelPath": "Potion-Maker/Pio"
+	},
+	{
+		"modelIntroduce": "XiaoMai ！这里是 XiaoMai ~ ~",
+		"modelPath": "xiaomai/custom"
+	},
+	{
+		"modelIntroduce": "Shizuku Talk ！这里是 Shizuku ~",
+		"modelPath": "ShizukuTalk/shizuku-48"
 	}
 ]

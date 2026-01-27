@@ -93,27 +93,27 @@
 		"tap_body": [
 			{
 				"dialogue": 11,
-				"sound": "sounds/../../nepnep/general/snd/001.ogg",
+				"sound": "../../../models/HyperdimensionNeptunia/nepnep/general/snd/001.ogg",
 				"file": "../../../models/HyperdimensionNeptunia/nepnep/general/mtn/nep_touch_head_1.mtn"
 			},
 			{
 				"dialogue": 13,
-				"sound": "sounds/../../nepnep/general/snd/013.ogg",
+				"sound": "../../../models/HyperdimensionNeptunia/nepnep/general/snd/013.ogg",
 				"file": "../../../models/HyperdimensionNeptunia/nepnep/general/mtn/nep_touch_belly_1.mtn"
 			},
 			{
 				"dialogue": 90,
-				"sound": "sounds/../../nepnep/general/snd/101.ogg",
+				"sound": "../../../models/HyperdimensionNeptunia/nepnep/general/snd/101.ogg",
 				"file": "../../../models/HyperdimensionNeptunia/nepnep/general/mtn/nep_slide_head_2.mtn"
 			},
 			{
 				"dialogue": 93,
-				"sound": "sounds/../../nepnep/general/snd/007.ogg",
+				"sound": "../../../models/HyperdimensionNeptunia/nepnep/general/snd/007.ogg",
 				"file": "../../../models/HyperdimensionNeptunia/nepnep/general/mtn/nep_touch_boobs_1.mtn"
 			},
 			{
 				"dialogue": 94,
-				"sound": "sounds/../../nepnep/general/snd/014.ogg",
+				"sound": "../../../models/HyperdimensionNeptunia/nepnep/general/snd/014.ogg",
 				"file": "../../../models/HyperdimensionNeptunia/nepnep/general/mtn/nep_touch_belly_2.mtn"
 			}
 		]
