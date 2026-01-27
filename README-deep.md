@@ -31,7 +31,7 @@
 - **优点**：极速、支持全局跨域、无需维护服务器空间。
 - **路径示例**：
   ```js
-  apiPath="https://cdn.jsdelivr.net/npm/live2d-static-api@1.0.5/indexes"
+  apiPath="https://cdn.jsdelivr.net/npm/live2d-static-api@1.0.6/indexes"
   apiPath="https://unpkg.com/live2d-static-api@1.0.4/indexes"
   ```
 
