@@ -19,7 +19,7 @@ const textureDefaultJsonFileName = 'default.json'
 const texturesIndexJsonFileName = 'textures.json'
 
 class Helper {
-  static async ensureExistFolder (folderPath) {
+  static async ensureExistFolder(folderPath) {
     try {
       await fs.stat(folderPath)
     } catch (e) {
@@ -28,7 +28,7 @@ class Helper {
     }
   }
 
-  static async deleteFolder (folderPath) {
+  static async deleteFolder(folderPath) {
     try {
       const stat = await fs.stat(folderPath)
       if (!stat.isDirectory()) {
@@ -43,11 +43,11 @@ class Helper {
     console.log(`已删除 ${folderPath}`)
   }
 
-  static stringify (json) {
+  static stringify(json) {
     return JSON.stringify(json, null, isCompress ? '' : '\t')
   }
 
-  static factorial (rest, result = [], detail = []) {
+  static factorial(rest, result = [], detail = []) {
     if (rest.length === 0) {
       result.push(detail)
       return result
@@ -65,25 +65,25 @@ class Helper {
 }
 
 class Setting {
-  static updateModel (fromModelPath, toModelPath, json) {
+  static updateModel(fromModelPath, toModelPath, json) {
     if (json.model) {
       json.model = path.relative(toModelPath, path.normalize(`${fromModelPath}/${json.model}`))
     }
   }
 
-  static updatePose (fromModelPath, toModelPath, json) {
+  static updatePose(fromModelPath, toModelPath, json) {
     if (json.pose) {
       json.pose = path.relative(toModelPath, path.normalize(`${fromModelPath}/${json.pose}`))
     }
   }
 
-  static updatePhysics (fromModelPath, toModelPath, json) {
+  static updatePhysics(fromModelPath, toModelPath, json) {
     if (json.physics) {
       json.physics = path.relative(toModelPath, path.normalize(`${fromModelPath}/${json.physics}`))
     }
   }
 
-  static updateExpressions (fromModelPath, toModelPath, json) {
+  static updateExpressions(fromModelPath, toModelPath, json) {
     if (json.expressions) {
       json.expressions.forEach(({ file }, index, array) => {
         array[index].file = path.relative(toModelPath, path.normalize(`${fromModelPath}/${file}`))
@@ -91,7 +91,7 @@ class Setting {
     }
   }
 
-  static updateMotions (fromModelPath, toModelPath, json) {
+  static updateMotions(fromModelPath, toModelPath, json) {
     if (json.motions) {
       Object.values(json.motions).forEach(groups => {
         groups.forEach((motion, index, array) => {
@@ -106,7 +106,7 @@ class Setting {
     }
   }
 
-  static updateTextures (fromModelPath, toModelPath, json, textures = []) {
+  static updateTextures(fromModelPath, toModelPath, json, textures = []) {
     json.textures = textures.map(texture => {
       return path.relative(toModelPath, path.normalize(`${fromModelPath}/${texture}`))
     })
@@ -115,7 +115,7 @@ class Setting {
 
 init()
 
-async function init () {
+async function init() {
   await Helper.deleteFolder(toBasePath)
   await Helper.ensureExistFolder(toBasePath)
 
@@ -136,20 +136,20 @@ async function init () {
   })
 }
 
-async function createModelsIndexJsonFile () {
+async function createModelsIndexJsonFile() {
   const modelPaths = await getAllModelPaths()
   await fs.writeFile(`${toBasePath}/${modelsIndexJsonFileName}`, Helper.stringify(modelPaths))
   return modelPaths
 }
 
-async function createTexturesIndexJsonFile (toModelPath) {
+async function createTexturesIndexJsonFile(toModelPath) {
   const dirents = await fs.readdir(toModelPath, { withFileTypes: true })
   const textureNames = dirents.map(dirent => path.parse(dirent.name).name)
   await fs.writeFile(`${toModelPath}/${texturesIndexJsonFileName}`, Helper.stringify(textureNames))
   return textureNames
 }
 
-async function createTextureJsonFiles (fromModelPath, toModelPath) {
+async function createTextureJsonFiles(fromModelPath, toModelPath) {
   const textureDefaultJsonStr = await getTextureDefaultJsonStr(fromModelPath, toModelPath)
 
   await fs.writeFile(`${toModelPath}/${textureDefaultJsonFileName}`, textureDefaultJsonStr)
@@ -170,7 +170,7 @@ async function createTextureJsonFiles (fromModelPath, toModelPath) {
   }))
 }
 
-async function getTextureDefaultJsonStr (fromModelPath, toModelPath) {
+async function getTextureDefaultJsonStr(fromModelPath, toModelPath) {
   const modelTemplateJsonFile = await fs.readFile(`${fromModelPath}/${modelTemplateJsonFileName}`, 'utf-8')
 
   const defaultTextureJson = JSON.parse(modelTemplateJsonFile)
@@ -185,7 +185,7 @@ async function getTextureDefaultJsonStr (fromModelPath, toModelPath) {
   return Helper.stringify(defaultTextureJson)
 }
 
-async function getTextureGroups (fromModelPath) {
+async function getTextureGroups(fromModelPath) {
   // texture 是分部分的，几个文件夹就几部分，也就是数组的长度，从模板文件获取顺序
   const modelTemplateJsonFile = await fs.readFile(`${fromModelPath}/${modelTemplateJsonFileName}`, 'utf-8')
 
@@ -203,12 +203,12 @@ async function getTextureGroups (fromModelPath) {
   return textureGroups
 }
 
-async function getAllModelPaths () {
+async function getAllModelPaths() {
   const modelPaths = []
   await fillModelPath(fromBasePath)
   return modelPaths
 
-  async function fillModelPath (path) {
+  async function fillModelPath(path) {
     const modelTemplateJsonFilePath = `${path}/${modelTemplateJsonFileName}`
     try {
       const stat = await fs.stat(modelTemplateJsonFilePath)
@@ -235,7 +235,7 @@ async function getAllModelPaths () {
   }
 }
 
-function setBuildOptions (buildOptions) {
+function setBuildOptions(buildOptions) {
   process.argv.slice(2).forEach(arg => {
     const [key, val] = arg.split('=')
     switch (key) {
